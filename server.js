@@ -1,15 +1,12 @@
 const fs = require("fs");
 const express = require("express");
-const cors = require("cors");
+const {client} = require("pg")
 const app = express();
+app.use("/JS", express.static('./JS/'));
 app.use(express.static('public'));
-
-app.use(cors());
 app.use(express.json());
 
-app.post('/', (req, res) => {
-    res.send('Hello World!')
-  })
+
   
 
 var port = process.env.PORT||3000;
