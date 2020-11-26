@@ -1,96 +1,57 @@
-let tasks=JSON.parse(localStorage.getItem("tasks"));
+//lista oppgavene skal inn i
+let tasks=[];
 
-let inputValue = document.getElementById("input").value;
-let task = {
-  id: new Date().getTime(),
-  name: inputValue
+//En oppgave
+function Task(whatTask){
+  this.whatTask = whatTask;
 };
 
-showTasks();
-deleteButton();
-
-function deleteButton(){
-let deleteButton = document.getElementsByTagName("li");
-for(i=0;i<deleteButton.length;i++){
-  let span = document.createElement("span");
-  let deleteImage = document.createTextNode("\u00D7");
-  span.className="closeTask";
-  span.appendChild(deleteImage);
-  deleteButton[i].appendChild(span);
-  }
+//legger til nye oppgaver
+function addNewTask(whatTask){
+let newTask = new Task(whatTask);
+tasks.push(newTask);
 };
 
+//fjerner oppgaver
+function removeTask(index){
+  tasks.splice(index, 1);
+};
+//finner frem oppgaven
+function getTask(index){
+  return tasks[index];
+};
 
-  let closeTask = document.getElementsByClassName("closeTask");
-  for (i = 0; i<closeTask.length; i++){
-    closeTask[i].onclick = function(){
-      let div = this.parentElement;
-      div.style.display = "none";
-      
-  }
+//listen der oppgavene
+let index = 0;
+
+function taskList(){
+  let i;
+for(i = index; i<tasks.length; i++){
+  let task = tasks[i];
+  let whatTask = task.whatTask;
+  let output = document.getElementById("myList");
+  output.innerHTML += "<li>"+whatTask+"</li>";
+  console.log(task);
 }
-
-function showTasks(){
-let ul = document.getElementById("myList");
-for(i=0;i<tasks.length;i++){
-  li=document.createElement("li");
-  ul.appendChild(li)
-  li.innerHTML=task.name+"<br>"
-  }
+index=i;
 };
-
-/*function newElement() {
-  var li = document.createElement("li");
-  var inputValue = document.getElementById("input").value;
-  var t = document.createTextNode(inputValue);
-  li.appendChild(t);
-  if (inputValue === '') {
-    alert("You must write something!");
-  } else {
-    document.getElementById("myList").appendChild(li);
-  }
-  document.getElementById("input").value = "";
-
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
-
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-      var div = this.parentElement;
-      div.style.display = "none";
-    }
-  }
-}*/
 
 
   //legger til oppgaver
   function addTask(){
-    let li = document.createElement("li");
-    if(input.value===""){
+    let whatTask = document.getElementById("input").value;
+    if(whatTask===""){
       alert("Add a task!")
     }else{
-      document.getElementById("myList").appendChild(li);
-      
-      //legger til oppgavene i localstorage
-    let newTask = document.getElementById("input").value;
-    if(localStorage.getItem("tasks")==null){
-      localStorage.setItem("tasks", "[]");
-    }
-    let oldTask = JSON.parse(localStorage.getItem("tasks"));
-    oldTask.push(newTask);
-    localStorage.setItem("tasks", JSON.stringify(oldTask));
-    li.innerHTML += input.value+ "<br>";
-
-    
-    
-
-    
-    //span.textContent=JSON.parse(localStorage.getItem("tasks"));
+      addNewTask(whatTask);
+      taskList();
   }
    };
 
-
+   //lar brukeren benytte "enter"-knappen
+   let input = document.getElementById("input");
+   input.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+     document.getElementById("newTask").click();
+    }});
 
