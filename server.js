@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.set('port', port);
 app.use(routes);
 
-server.post("/JS", async function (req, res) {
+app.post("/JS", async function (req, res) {
 
   const newTask = new task(req.body.task);
   
