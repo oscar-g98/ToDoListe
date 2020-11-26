@@ -6,6 +6,7 @@ const app = express();
 const port = process.env.PORT||3000;
 
 app.use("/JS", express.static('./JS/'));
+app.use('/', express.static('client'));
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.set('port', port);
