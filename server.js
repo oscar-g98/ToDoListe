@@ -12,24 +12,13 @@ app.use(bodyParser.json());
 app.set('port', port);
 app.use(routes);
 
-app.post("/JS", async function (req, res) {
-
-  const newTask = new task(req.body.task);
-  
-  await newTask.createTask();
-  
-  res.status(200).json(newTask).end();
-
+app.get('/JS', function (req, res) {
+  res.send('GET')
 })
 
-app.get("/JS", async function (req, res) {
-    try{
-      let response = await db.getTask();
-      res.status(200).json(response).end();
-      }catch(error){
-        console.error(error)
-      }
-  })
+app.post('/JS', function (req, res) {
+  res.send('POST')
+})
 
 app.listen(app.get('port'), function () {
     console.log('server running', app.get('port'));
