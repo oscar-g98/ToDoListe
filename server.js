@@ -4,22 +4,11 @@ const express = require("express");
 const {client} = require("pg")
 const app = express();
 const port = process.env.PORT||3000;
-const routes = require("./routes");
+const path = require('path');
 
-app.use("/JS", express.static('./JS/'));
-app.use(express.static('public'));
-app.use(bodyParser.json());
-app.set('port', port);
-app.use(routes);
 
-app.get('/JS', function (req, res) {
-  res.send('GET')
-})
-
-app.post('/JS', function (req, res) {
-  res.send('POST')
-})
-
-app.listen(app.get('port'), function () {
-    console.log('server running', app.get('port'));
-  });
+express()
+  .use(express.static(path.join(__dirname, 'public')))
+  .set('views', path.join(__dirname, 'server'))
+  .get('/', (req, res) => res.render('pages/index'))
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
