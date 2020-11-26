@@ -1,10 +1,7 @@
-const fs = require("fs");
-const bodyParser = require('body-parser');
 const express = require("express");
-const {client} = require("pg")
 const server= express();
 const path = require('path');
-const port = process.env.PORT||3000;
+const PORT = process.env.PORT||3000;
 
 
 express()
