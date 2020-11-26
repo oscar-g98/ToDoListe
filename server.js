@@ -12,6 +12,16 @@ app.use(bodyParser.json());
 app.set('port', port);
 app.use(routes);
 
+server.post("/JS", async function (req, res) {
+
+  const newTask = new task(req.body.task);
+  
+  await newTask.createTask();
+  
+  res.status(200).json(newTask).end();
+
+})
+
 app.listen(app.get('port'), function () {
     console.log('server running', app.get('port'));
   });
