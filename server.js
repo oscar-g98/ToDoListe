@@ -22,6 +22,15 @@ app.post("/JS", async function (req, res) {
 
 })
 
+app.get("/JS", async function (req, res) {
+    try{
+      let response = await db.getTask();
+      res.status(200).json(response).end();
+      }catch(error){
+        console.error(error)
+      }
+  })
+
 app.listen(app.get('port'), function () {
     console.log('server running', app.get('port'));
   });
