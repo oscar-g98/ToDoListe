@@ -51,6 +51,14 @@ function Delete(currentEl){
   }
    };
 
+//Krysser av oppgaver
+   let completeTask = document.querySelector("ul");
+completeTask.addEventListener("click", function(event) {
+  if (event.target.tagName === "LI") {
+    event.target.classList.toggle("checked");
+  }
+}, false);
+
    //lar brukeren benytte "enter"-knappen
    let input = document.getElementById("input");
    input.addEventListener("keyup", function(event) {
