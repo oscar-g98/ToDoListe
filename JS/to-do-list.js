@@ -30,11 +30,14 @@ for(i = index; i<tasks.length; i++){
   let task = tasks[i];
   let whatTask = task.whatTask;
   let output = document.getElementById("myList");
-  output.innerHTML += "<li>"+whatTask+"</li>";
+  output.innerHTML += '<li>'+whatTask+'<button class="button button2" onclick="Delete(this);">Remove</button></li>';
   console.log(task);
 }
 index=i;
 };
+function Delete(currentEl){
+  currentEl.parentNode.parentNode.removeChild(currentEl.parentNode);
+  }
 
 
   //legger til oppgaver
@@ -55,3 +58,4 @@ index=i;
      document.getElementById("newTask").click();
     }});
 
+  
