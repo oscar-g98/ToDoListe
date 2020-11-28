@@ -1,3 +1,4 @@
+
 body, html {
     margin: 0;
     padding: 20px;
@@ -122,16 +123,16 @@ ul li.checked {
   }
 
   ul li.checked::before {
-  content: '';
-  position: absolute;
-  border-color: rgb(20, 194, 34);
-  border-style: solid;
-  border-width: 0 2px 2px 0;
-  top: 10px;
-  left 16px;
-  transform: rotate(45deg);
-  height: 15px;
-  width: 7px;
+	content: '';
+    position: absolute;
+    border-color: rgb(7, 212, 34);
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    top: 10px;
+    left: 16px;
+    transform: rotate(45deg);
+    height: 15px;
+    width: 7px;
 }
 
 ul li:nth-child(even) {
@@ -149,4 +150,3 @@ ul li:nth-child(even) {
 	background-color: #815956;
 	color: white;
   }
-  
