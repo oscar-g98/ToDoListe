@@ -139,14 +139,4 @@ ul li:nth-child(even) {
 	background: #f9f9f9;
   }
 
- .closeTask {
-	float: right;
-	right: 0;
-	top: 0;
-	padding: 12px 16px 12px 16px;
-  }
 
- .closeTask:hover {
-	background-color: #815956;
-	color: white;
-  }
