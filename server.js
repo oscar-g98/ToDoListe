@@ -8,7 +8,6 @@ const PORT = process.env.PORT || 3000;
 
 
 express()
-  .use ("/script", express.static("./script"))
   .use ("/JS", express.static("./JS"))
   .use(express.static(path.join(__dirname, 'Public')))
   .set('views', path.join(__dirname, 'server'))
